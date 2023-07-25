@@ -17,7 +17,6 @@ import { AboutModule } from "./about/about.module";
         module: AboutModule,
       },
     ]),
-    AboutModule,
   ],
   controllers: [],
   providers: [],
