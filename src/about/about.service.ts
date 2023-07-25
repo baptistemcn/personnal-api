@@ -6,7 +6,7 @@ import { join } from "path";
 @Injectable()
 export class AboutService {
   findAll(): StreamableFile {
-    const file = createReadStream(join(process.cwd(), "assets/db.json"));
+    const file = createReadStream(join(process.cwd(), "assets/about.json"));
     return new StreamableFile(file);
   }
 }
