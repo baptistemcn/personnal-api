@@ -1,5 +1,6 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { AboutService } from "./about.service";
+import { StreamableFile } from "@nestjs/common";
 
 describe("AboutService", () => {
   let service: AboutService;
@@ -14,5 +15,11 @@ describe("AboutService", () => {
 
   it("should be defined", () => {
     expect(service).toBeDefined();
+  });
+
+  it("should return a JSON object of experience", () => {
+    const result = service.findAll();
+
+    expect(result).toBeInstanceOf(StreamableFile);
   });
 });
