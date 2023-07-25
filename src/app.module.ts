@@ -1,6 +1,7 @@
 import { Module } from "@nestjs/common";
 import { HealthModule } from "./health/health.module";
 import { RouterModule } from "@nestjs/core";
+import { AboutModule } from './about/about.module';
 
 @Module({
   imports: [
@@ -11,6 +12,7 @@ import { RouterModule } from "@nestjs/core";
         module: HealthModule,
       },
     ]),
+    AboutModule,
   ],
   controllers: [],
   providers: [],
