@@ -1,7 +1,14 @@
 import { Test, TestingModule } from "@nestjs/testing";
+
+import { readFileSync } from "fs";
+import { join } from "path";
+
 import { AboutController } from "./about.controller";
 import { AboutService } from "./about.service";
-import { StreamableFile } from "@nestjs/common";
+
+const mockFilePath = join(process.cwd(), "assets/about.json");
+const mockFileContent = readFileSync(mockFilePath, "utf-8");
+const mockJsonData = JSON.parse(mockFileContent);
 
 describe("AboutController", () => {
   let controller: AboutController;
@@ -24,6 +31,6 @@ describe("AboutController", () => {
   it("should return findAll from service", () => {
     const result = provider.findAll();
 
-    expect(result).toBeInstanceOf(StreamableFile);
+    expect(result).toEqual(mockJsonData);
   });
 });

@@ -1,12 +1,14 @@
-import { Injectable, StreamableFile } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 
-import { createReadStream } from "fs";
+import { readFileSync } from "fs";
 import { join } from "path";
 
 @Injectable()
 export class AboutService {
-  findAll(): StreamableFile {
-    const file = createReadStream(join(process.cwd(), "assets/about.json"));
-    return new StreamableFile(file);
+  findAll() {
+    const filePath = join(process.cwd(), "assets/about.json");
+    const fileContent = readFileSync(filePath, "utf-8");
+    const jsonData = JSON.parse(fileContent);
+    return jsonData;
   }
 }
