@@ -43,7 +43,7 @@ export class AboutController {
     status: 500,
     description: "Server Error",
   })
-  findAll(@Query("lang") lang: string) {
-    return this.aboutService.findAll(lang);
+  findAll(@Query("language") language: string) {
+    return this.aboutService.findAll(language);
   }
 }
