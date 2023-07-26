@@ -5,9 +5,11 @@ import { join } from "path";
 
 import { AboutService } from "./about.service";
 
-const mockFilePath = join(process.cwd(), "assets/about.json");
+const mockFilePath = join(process.cwd(), "assets/fr.about.json");
 const mockFileContent = readFileSync(mockFilePath, "utf-8");
 const mockJsonData = JSON.parse(mockFileContent);
+
+const mockLang = "fr";
 
 describe("AboutService", () => {
   let service: AboutService;
@@ -25,7 +27,7 @@ describe("AboutService", () => {
   });
 
   it("should return a JSON object of experience", () => {
-    const result = service.findAll();
+    const result = service.findAll(mockLang);
 
     expect(result).toEqual(mockJsonData);
   });

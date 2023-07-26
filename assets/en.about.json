@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Full-Stack Developer - NEHS Digital",
+    "presentation": "In my current role, I focus on developing new features, creating appealing design integrations, and managing legacy code, thereby contributing to the continuous evolution and improvement of our products.",
+    "duration": "Janv. 2022",
+    "technologies": [
+      { "name": "Angular" },
+      { "name": "RxJS" },
+      { "name": "SASS" },
+      { "name": "Jest" },
+      { "name": ".NET" },
+      { "name": "PHP" },
+      { "name": "MySQL" },
+      { "name": "Jenkins" }
+    ]
+  }
+]

@@ -6,9 +6,11 @@ import { join } from "path";
 import { AboutController } from "./about.controller";
 import { AboutService } from "./about.service";
 
-const mockFilePath = join(process.cwd(), "assets/about.json");
+const mockFilePath = join(process.cwd(), "assets/fr.about.json");
 const mockFileContent = readFileSync(mockFilePath, "utf-8");
 const mockJsonData = JSON.parse(mockFileContent);
+
+const mockLang = "fr";
 
 describe("AboutController", () => {
   let controller: AboutController;
@@ -29,7 +31,7 @@ describe("AboutController", () => {
   });
 
   it("should return findAll from service", () => {
-    const result = provider.findAll();
+    const result = provider.findAll(mockLang);
 
     expect(result).toEqual(mockJsonData);
   });

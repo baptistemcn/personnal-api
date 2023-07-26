@@ -1,4 +1,4 @@
-import { Controller, Get, Header, HttpCode } from "@nestjs/common";
+import { Controller, Get, Header, HttpCode, Query } from "@nestjs/common";
 import { ApiResponse, ApiTags } from "@nestjs/swagger";
 
 import { AboutService } from "./about.service";
@@ -43,7 +43,7 @@ export class AboutController {
     status: 500,
     description: "Server Error",
   })
-  findAll() {
-    return this.aboutService.findAll();
+  findAll(@Query("lang") lang: string) {
+    return this.aboutService.findAll(lang);
   }
 }
