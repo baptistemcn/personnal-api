@@ -1,6 +1,8 @@
 import { Controller, Get, Header, HttpCode } from "@nestjs/common";
 import { AboutService } from "./about.service";
+import { ApiTags } from "@nestjs/swagger";
 
+@ApiTags("About")
 @Controller()
 export class AboutController {
   constructor(private readonly aboutService: AboutService) {}
