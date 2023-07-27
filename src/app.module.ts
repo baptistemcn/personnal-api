@@ -9,13 +9,9 @@ import { CertificationsModule } from "./certifications/certifications.module";
 @Module({
   imports: [
     AboutModule,
-    HealthModule,
     CertificationsModule,
+    HealthModule,
     RouterModule.register([
-      {
-        path: "health",
-        module: HealthModule,
-      },
       {
         path: "about",
         module: AboutModule,
@@ -23,6 +19,10 @@ import { CertificationsModule } from "./certifications/certifications.module";
       {
         path: "certifications",
         module: CertificationsModule,
+      },
+      {
+        path: "health",
+        module: HealthModule,
       },
     ]),
     ThrottlerModule.forRoot({
