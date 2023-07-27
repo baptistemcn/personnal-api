@@ -5,6 +5,7 @@ import { ThrottlerGuard, ThrottlerModule } from "@nestjs/throttler";
 import { AboutModule } from "./about/about.module";
 import { HealthModule } from "./health/health.module";
 import { CertificationsModule } from "./certifications/certifications.module";
+import { ProjectsModule } from './projects/projects.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { CertificationsModule } from "./certifications/certifications.module";
       ttl: 600,
       limit: 5,
     }),
+    ProjectsModule,
   ],
   controllers: [],
   providers: [
