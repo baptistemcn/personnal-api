@@ -4,11 +4,13 @@ import { ThrottlerGuard, ThrottlerModule } from "@nestjs/throttler";
 
 import { AboutModule } from "./about/about.module";
 import { HealthModule } from "./health/health.module";
+import { CertificationsModule } from "./certifications/certifications.module";
 
 @Module({
   imports: [
     AboutModule,
     HealthModule,
+    CertificationsModule,
     RouterModule.register([
       {
         path: "health",
@@ -17,6 +19,10 @@ import { HealthModule } from "./health/health.module";
       {
         path: "about",
         module: AboutModule,
+      },
+      {
+        path: "certifications",
+        module: CertificationsModule,
       },
     ]),
     ThrottlerModule.forRoot({
