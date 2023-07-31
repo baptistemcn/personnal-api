@@ -33,7 +33,7 @@ import { ProjectsModule } from "./projects/projects.module";
     ]),
     ThrottlerModule.forRoot({
       ttl: 600,
-      limit: 5,
+      limit: 10,
     }),
   ],
   controllers: [],
