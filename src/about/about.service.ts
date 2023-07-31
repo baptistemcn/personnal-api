@@ -18,7 +18,6 @@ export class AboutService {
         },
       },
       include: {
-        languages: true,
         technologies: true,
       },
     });
