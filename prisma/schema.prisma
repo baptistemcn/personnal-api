@@ -15,12 +15,20 @@ model Experience {
   name         String       @unique
   presentation String       @unique
   duration     String
+  language     Language[]
   technologies Technology[]
 }
 
 model Technology {
   id           Int         @id @default(autoincrement())
   name         String
+  Experience   Experience? @relation(fields: [experienceId], references: [id])
+  experienceId Int?
+}
+
+model Language {
+  id           Int         @id @default(autoincrement())
+  language     String      @unique
   Experience   Experience? @relation(fields: [experienceId], references: [id])
   experienceId Int?
 }
