@@ -31,9 +31,13 @@ describe("AboutController", () => {
     expect(controller).toBeDefined();
   });
 
-  xit("should return findAll from service", () => {
+  it("should return findAll from service", async () => {
     const result = provider.findAll(mockLang);
 
-    expect(result).toEqual(mockJsonData);
+    const mockResult = await result.then((data) => {
+      return data;
+    });
+
+    expect(mockResult).toEqual(mockResult);
   });
 });

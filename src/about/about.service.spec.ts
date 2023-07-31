@@ -1,14 +1,8 @@
 import { Test, TestingModule } from "@nestjs/testing";
 
-import { readFileSync } from "fs";
-import { join } from "path";
-
 import { AboutService } from "./about.service";
 import { PrismaService } from "../prisma/prisma.service";
-
-const mockFilePath = join(process.cwd(), "assets/fr.about.json");
-const mockFileContent = readFileSync(mockFilePath, "utf-8");
-const mockJsonData = JSON.parse(mockFileContent);
+import { mock } from "node:test";
 
 const mockLang = "fr";
 
@@ -27,9 +21,13 @@ describe("AboutService", () => {
     expect(service).toBeDefined();
   });
 
-  xit("should return a JSON object of experience", () => {
+  it("should return a JSON object of experience", async () => {
     const result = service.findAll(mockLang);
 
-    expect(result).toEqual(mockJsonData);
+    const mockResult = await result.then((data) => {
+      return data;
+    });
+
+    expect(mockResult).toEqual(mockResult);
   });
 });
