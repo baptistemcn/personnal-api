@@ -9,3 +9,18 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
+model Experience {
+  id           Int          @id @default(autoincrement())
+  name         String       @unique
+  presentation String       @unique
+  duration     String
+  technologies Technology[]
+}
+
+model Technology {
+  id           Int         @id @default(autoincrement())
+  name         String
+  Experience   Experience? @relation(fields: [experienceId], references: [id])
+  experienceId Int?
+}
