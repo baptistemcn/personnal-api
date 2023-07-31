@@ -2,7 +2,6 @@ import { Test, TestingModule } from "@nestjs/testing";
 
 import { AboutService } from "./about.service";
 import { PrismaService } from "../prisma/prisma.service";
-import { mock } from "node:test";
 
 const mockLang = "fr";
 
