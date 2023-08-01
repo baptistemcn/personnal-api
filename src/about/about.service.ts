@@ -1,25 +1,22 @@
 import { Injectable } from "@nestjs/common";
 
-import { PrismaService } from "../prisma/prisma.service";
+import { readFileSync } from "fs";
+import { join } from "path";
 
 @Injectable()
 export class AboutService {
-  constructor(private prisma: PrismaService) {}
+  french = join(process.cwd(), "assets/fr.about.json");
+  english = join(process.cwd(), "assets/en.about.json");
 
   findAll(language: string) {
-    return this.prisma.experience.findMany({
-      where: {
-        languages: {
-          some: {
-            language: {
-              equals: language,
-            },
-          },
-        },
-      },
-      include: {
-        technologies: true,
-      },
-    });
+    const languages: { [key: string]: string } = {
+      fr: this.french,
+      en: this.english,
+    };
+
+    const filePath = languages[language] || this.english;
+    const fileContent = readFileSync(filePath, "utf-8");
+    const jsonData = JSON.parse(fileContent);
+    return jsonData;
   }
 }

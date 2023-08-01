@@ -34,7 +34,7 @@ import { PrismaService } from "./prisma/prisma.service";
     ]),
     ThrottlerModule.forRoot({
       ttl: 600,
-      limit: 10,
+      limit: 100,
     }),
   ],
   controllers: [],

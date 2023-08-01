@@ -1,8 +1,14 @@
 import { Test, TestingModule } from "@nestjs/testing";
 
+import { readFileSync } from "fs";
+import { join } from "path";
+
 import { AboutController } from "./about.controller";
 import { AboutService } from "./about.service";
-import { PrismaService } from "../prisma/prisma.service";
+
+const mockFilePath = join(process.cwd(), "assets/fr.about.json");
+const mockFileContent = readFileSync(mockFilePath, "utf-8");
+const mockJsonData = JSON.parse(mockFileContent);
 
 const mockLang = "fr";
 
@@ -13,7 +19,7 @@ describe("AboutController", () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [AboutController],
-      providers: [AboutService, PrismaService],
+      providers: [AboutService],
     }).compile();
 
     controller = module.get<AboutController>(AboutController);
@@ -24,13 +30,9 @@ describe("AboutController", () => {
     expect(controller).toBeDefined();
   });
 
-  it("should return findAll from service", async () => {
+  it("should return findAll from service", () => {
     const result = provider.findAll(mockLang);
 
-    const mockResult = await result.then((data) => {
-      return data;
-    });
-
-    expect(mockResult).toEqual(mockResult);
+    expect(result).toEqual(mockJsonData);
   });
 });
