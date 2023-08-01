@@ -6,7 +6,6 @@ import { AboutModule } from "./about/about.module";
 import { HealthModule } from "./health/health.module";
 import { CertificationsModule } from "./certifications/certifications.module";
 import { ProjectsModule } from "./projects/projects.module";
-import { PrismaService } from "./prisma/prisma.service";
 
 @Module({
   imports: [
@@ -43,7 +42,6 @@ import { PrismaService } from "./prisma/prisma.service";
       provide: APP_GUARD,
       useClass: ThrottlerGuard,
     },
-    PrismaService,
   ],
 })
 export class AppModule {}
