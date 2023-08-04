@@ -18,7 +18,11 @@ async function bootstrap() {
   }
 
   const corsOptions: CorsOptions = {
-    origin: "*",
+    origin: [
+      "https://baptistemcn.onrender.com/",
+      "https://baptistemcn.surge.sh/",
+      "http://http://localhost:5173/",
+    ],
     methods: "GET",
     allowedHeaders: "Content-Type,Authorization",
   };
